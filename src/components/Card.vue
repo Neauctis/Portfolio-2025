@@ -10,15 +10,6 @@ export default {
       type: String,
       required: true,
     },
-    buttonText: {
-      type: String,
-      default: '',
-    },
-  },
-  methods: {
-    handleClick() {
-      this.$emit('click')
-    },
   },
 }
 </script>
@@ -31,17 +22,12 @@ export default {
     <div class="card-body">
       <p>{{ content }}</p>
     </div>
-    <div class="card-footer">
-      <button v-if="buttonText" @click="handleClick">
-        {{ buttonText }}
-      </button>
-    </div>
   </div>
 </template>
 
 <style scoped>
 .card {
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
 
   border-radius: 8px;
   padding: 16px;
@@ -63,27 +49,10 @@ export default {
 }
 
 .card-body p {
-  text-align: justify;
-  line-height: 1.6;
-  word-spacing: -0.5px;
-  hyphens: auto;
   margin: 16px 0;
 }
 
 .card-footer {
   text-align: right;
-}
-
-.card-footer button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-}
-
-.card-footer button:hover {
-  background-color: #0056b3;
 }
 </style>
