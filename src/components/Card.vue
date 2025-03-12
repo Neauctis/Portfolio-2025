@@ -63,6 +63,10 @@ export default {
 }
 
 .card-body p {
+  text-align: justify;
+  line-height: 1.6;
+  word-spacing: -0.5px;
+  hyphens: auto;
   margin: 16px 0;
 }
 
