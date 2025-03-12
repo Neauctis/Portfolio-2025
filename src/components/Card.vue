@@ -63,7 +63,6 @@ export default {
 }
 
 .card-body p {
-  text-align: justify;
   margin: 16px 0;
 }
 
