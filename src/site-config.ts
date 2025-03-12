@@ -1,17 +1,17 @@
 export const siteConfig = {
-  author: 'Kevin Wong',
-  title: 'Vitesse theme for Astro',
-  subtitle: 'Vitesse theme for Astro, supports Vue and UnoCSS.',
-  description: 'A Minimal, SEO-friendly portfolio and blog theme for Astro.',
+  author: 'Aurélien Chauveau',
+  title: 'Portfolio 2025 Aurélien Chauveau',
+  subtitle: 'Portfolio d\'Aurélien Chauveau version 2025',
+  description: 'Le portfolio d\'Aurélien Chauveau regroupant de nombreux projets.',
   image: {
     src: '/hero.jpg',
-    alt: 'Website Main Image',
+    alt: 'Image Principale du Site',
   },
-  email: 'kevinwong865@gmail.com',
+  email: 'aure.chv49@gmail.com',
   socialLinks: [
     {
       text: 'GitHub',
-      href: '',
+      href: 'https://github.com/Neauctis',
       icon: 'i-simple-icons-github',
       header: 'i-ri-github-line',
     },
@@ -23,7 +23,7 @@ export const siteConfig = {
     },
     {
       text: 'Linkedin',
-      href: '',
+      href: 'www.linkedin.com/in/aurélien-chauveau-766534316',
       icon: 'i-simple-icons-linkedin',
     },
     {

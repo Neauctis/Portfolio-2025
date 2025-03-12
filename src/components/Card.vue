@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" bg-hex-8883>
     <div class="card-header">
       <h2>{{ title }}</h2>
     </div>
@@ -42,7 +42,7 @@ export default {
 <style scoped>
 .card {
   border: 1px solid #ccc;
-  background-color: white;
+
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
