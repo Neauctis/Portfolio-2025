@@ -249,7 +249,7 @@ export default {
   margin: 0;
   border-radius: 16px;
   font-size: 0.8rem;
-  font-style: italic;
+  font-weight: 600;
   white-space: nowrap;
 }
 
