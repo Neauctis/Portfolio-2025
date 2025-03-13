@@ -4,7 +4,7 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
+      required: false,
     },
     content: {
       type: String,
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <div class="card" bg-hex-8883>
+  <div class="card" style="background-color: rgba(219, 219, 219, 0.05);">
     <div class="card-header">
       <h2>{{ title }}</h2>
     </div>

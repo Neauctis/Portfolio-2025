@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import siteConfig from '@/site-config'
 import TypedText from '@/components/TypedText.astro'
 import Card from '@/components/Card.vue'
+import Timeline from '@/components/timeline.vue'
 ---
 
 <BaseLayout description={siteConfig.description}>
@@ -14,10 +15,9 @@ import Card from '@/components/Card.vue'
       Ce Portfolio vous permet tout d'abord d'apprendre à me connaître et de découvrir certains projets sur lesquels
       j'ai pu travailler pendant mes études ou en stage.
     </p>
-
+    <h2 class="underline" style="text-decoration: underline #3498db;">À Propos de Moi</h2>
     <Card
       client:load
-      title="À propos de moi"
       content={`
       Je suis actuellement en 1ère année de BTS SIO « Services Informatiques aux Organisations – Cybersécurité »,
       option SLAM « Solutions Logicielles et Applications Métier »,
@@ -30,66 +30,128 @@ import Card from '@/components/Card.vue'
       Toutes mes études dans ces domaines ont été effectuées au Lycée Polyvalent Chevrollier à Angers.
       `}
     />
-
-    <p>
-      Based on first principles thinking, and you can also see from the picture
-      <sup>👆</sup>, the goal of this theme is to
-      <b>make complex things as simple as possible</b>
-      . So, the core of this theme is the content, and the other elements are just auxiliary.
-    </p>
-    <p>Here are the features you don't need to worry about:</p>
+    <h2 class="underline" style="text-decoration: underline #3498db;">Formations & Éxpériences Professionnelle</h2>
+    <Timeline
+      client:load
+      title="BTS SIO (SLAM)"
+      undertitle="Services Informatiques aux Organisations Option Solutions Logicielles et Applications Métiers"
+      startdate="2023"
+      enddate="2025"
+      address="Lycée Polyvalent Chevrollier, Angers"
+      content={`
+    <p>Formation en développement d'applications et cybersécurité. Spécialisation en:</p>
     <ul>
-      <li>100 / 100 Lighthouse performance</li>
-      <li>Responsive</li>
-      <li>SEO-friendly</li>
-      <li>Light / Dark Theme</li>
-      <li>Markdown support</li>
-      <li>
-        <a target="_blank" href="https://mdxjs.com/">MDX</a>
-        (components in your markdown) support
-      </li>
-      <li>
-        <a target="_blank" href="https://vuejs.org/">Vue</a>
-        SFC component support
-      </li>
-      <li>Auto generated sitemap and RSS Feed</li>
-      <li>
-        <a target="_blank" href="https://vueuse.org/">VueUse</a>
-        &
-        <a target="_blank" href="https://lodash.com/">Lodash</a>
-        support
-      </li>
+      <li>Développement Web</li>
+      <li>Développement d'Applications</li>
+      <li>Base de Données</li>
+      <li>Système et Réseaux</li>
+      <li>Gestion de Projet</li>
+      <li>Cybersécurité</li>
     </ul>
-    <p>
-      By the way, this theme use the <a target="_blank" href="https://unocss.dev/">UnoCSS</a> for style, it's fast.
-    </p>
-    <p>
-      Visit it
-      <a target="_blank" href="https://github.com/kevinwong865/astro-theme-vitesse"> on GitHub </a>
-      to fork the repository, read the docs or one-click deploy on Netlify.
-    </p>
-    <p>
-      If you like Vitesse theme for Astro, please
-      <a target="_blank" href="https://github.com/kevinwong865"> click follow </a>
-      for me.
-    </p>
-    <hr class="hr-line" />
-    <p>Find me on</p>
-    <p class="flex gap-x-4 gap-y-2 flex-wrap">
-      {
-        siteConfig.socialLinks.map((link) => (
-          <a aria-label={link.text} href={link.href} target="_blank" class="prose-link">
-            <i class:list={[link.icon]} />
-            {link.text}
-          </a>
-        ))
-      }
-    </p>
-    <p>
-      If you have any questions, please email me at
-      <a prose-link aria-label={siteConfig.email} href={`mailto:${siteConfig.email}`}>
-        {siteConfig.email}
-      </a>.
-    </p>
+  `}
+    >
+      <div v-if="true">
+        <Timeline
+          client:load
+          title="Stage de 2ème Année"
+          undertitle="Écoles Militaires de Saumur"
+          startdate="24/02/2025"
+          enddate="12/04/2025"
+          address="1757 Av. du Maréchal Foch, 49400 Saumur"
+          content={`
+        <p>Stage de 7 semaines en entreprise, dans le cadre de ma formation en BTS SIO SLAM.</p>
+        <p>Stage effectué au sein des Écoles Militaires de Saumur, dans le service informatique.</p>
+        <p>Travail sur la maintenance et la réparation de matériel informatique.</p>
+        <p>Travail sur la gestion de parc informatique.</p>
+        <p>Travail sur la gestion de serveurs.</p>
+        <p>Travail sur la gestion de la sécurité informatique.</p>
+      `}
+        />
+        <Timeline
+          client:load
+          title="Stage de 1ère Année"
+          undertitle="Groupe ZEKAT"
+          startdate="05/2024"
+          enddate="06/2024"
+          address="31 Rue de Champigny, 49400 Bellevigne-les-Châteaux"
+          content={`
+        <p>Stage de 7 semaines en entreprise, dans le cadre de ma formation en BTS SIO SLAM.</p>
+        <p>Stage effectué au sein des Écoles Militaires de Saumur, dans le service informatique.</p>
+        <p>Travail sur la maintenance et la réparation de matériel informatique.</p>
+        <p>Travail sur la gestion de parc informatique.</p>
+        <p>Travail sur la gestion de serveurs.</p>
+        <p>Travail sur la gestion de la sécurité informatique.</p>
+      `}
+        />
+      </div>
+    </Timeline>
+
+    <Timeline
+      client:load
+      title="BAC PRO SN (RISC)"
+      undertitle="Systèmes Numérique Option Réseaux Informatiques et Systèmes Communicants"
+      startdate="2021"
+      enddate="2023"
+      address="Lycée Polyvalent Chevrollier, Angers"
+      content={`
+  <p>Première et Terminale, obtention mention - "Bien".</p>
+`}
+    >
+      <div v-if="true">
+        <Timeline
+          client:load
+          title="Stage de 2ème Année"
+          undertitle="Groupe ZEKAT"
+          startdate="01/2023"
+          enddate="03/2023"
+          address="31 Rue de Champigny, 49400 Bellevigne-les-Châteaux"
+          content={`
+      <p>Découverte fonctionnement et entretien des réseaux de l’entreprise.</p>
+    `}
+        />
+        <Timeline
+          client:load
+          title="Stage de 1ère Année"
+          undertitle="Etablissement NETX"
+          startdate="03/2022"
+          enddate="06/2022"
+          address="27 rue du portail Louis · 49400 Saumur"
+          content={`
+      <p>Ventes entretiens et réparations de matériels Informatiques et vidéo.</p>
+    `}
+        />
+      </div>
+    </Timeline>
   </article>
+  <p>
+    By the way, this theme use the <a target="_blank" href="https://unocss.dev/">UnoCSS</a> for style, it's fast.
+  </p>
+  <p>
+    Visit it
+    <a target="_blank" href="https://github.com/kevinwong865/astro-theme-vitesse"> on GitHub </a>
+    to fork the repository, read the docs or one-click deploy on Netlify.
+  </p>
+  <p>
+    If you like Vitesse theme for Astro, please
+    <a target="_blank" href="https://github.com/kevinwong865"> click follow </a>
+    for me.
+  </p>
+  <hr class="hr-line" />
+  <p>Find me on</p>
+  <p class="flex gap-x-4 gap-y-2 flex-wrap">
+    {
+      siteConfig.socialLinks.map((link) => (
+        <a aria-label={link.text} href={link.href} target="_blank" class="prose-link">
+          <i class:list={[link.icon]} />
+          {link.text}
+        </a>
+      ))
+    }
+  </p>
+  <p>
+    If you have any questions, please email me at
+    <a prose-link aria-label={siteConfig.email} href={`mailto:${siteConfig.email}`}>
+      {siteConfig.email}
+    </a>.
+  </p>
 </BaseLayout>

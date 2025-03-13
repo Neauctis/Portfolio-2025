@@ -28,13 +28,13 @@ function toggleTheme(event: MouseEvent) {
     Math.max(x, innerWidth - x),
     Math.max(y, innerHeight - y),
   )
-  // @ts-expect-error: Transition API
+  //ts-expect-error: Transition API
   if (!document.startViewTransition) {
     toggleDark()
     return
   }
 
-  // @ts-expect-error: Transition API
+  //ts-expect-error: Transition API
   const transition = document.startViewTransition(async () => {
     toggleDark()
   })

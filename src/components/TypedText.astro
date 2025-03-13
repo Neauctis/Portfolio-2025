@@ -7,8 +7,15 @@
 <script>
   import Typed from 'typed.js'
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const _typed = new Typed('.typed', {
+  let typedInstance: Typed | null = null
+
+  function initTyped() {
+    // Cleanup previous instance if it exists
+    if (typedInstance) {
+      typedInstance.destroy()
+    }
+
+    typedInstance = new Typed('.typed', {
       strings: [
         'Développement Web',
         "Développement d'Applications",
@@ -22,5 +29,18 @@
       backDelay: 1000,
       loop: true,
     })
+  }
+
+  // Initialize on first load
+  document.addEventListener('DOMContentLoaded', initTyped)
+
+  // Initialize on view transitions
+  document.addEventListener('astro:page-load', initTyped)
+
+  // Cleanup when navigating away
+  document.addEventListener('astro:before-preparation', () => {
+    if (typedInstance) {
+      typedInstance.destroy()
+    }
   })
 </script>
