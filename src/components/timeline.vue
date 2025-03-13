@@ -110,14 +110,20 @@ export default {
           </div>
           <div class="details-area">
             <div class="timeline-period">
-              <span class="date-chip">{{ startdate }}</span>
+              <p class="date-chip">
+                {{ startdate }}
+              </p>
               <span class="date-separator">→</span>
-              <span class="date-chip">{{ enddate }}</span>
-              <span class="duration-badge">{{ formattedDuration }}</span>
+              <p class="date-chip">
+                {{ enddate }}
+              </p>
+              <p class="duration-badge">
+                {{ formattedDuration }}
+              </p>
             </div>
             <div v-if="address" class="timeline-address">
               <span class="location-icon" />
-              <span>{{ address }}</span>
+              <p>{{ address }}</p>
             </div>
           </div>
         </div>
@@ -226,6 +232,7 @@ export default {
   padding: 4px 12px;
   border-radius: 16px;
   font-size: 0.85rem;
+  margin: 0;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -239,6 +246,7 @@ export default {
   border: 1px solid #ddd;
   color: #3498db;
   padding: 4px 12px;
+  margin: 0;
   border-radius: 16px;
   font-size: 0.8rem;
   font-style: italic;
