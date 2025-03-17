@@ -1,109 +1,48 @@
-<script>
-export default {
-  name: 'Timeline',
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    undertitle: {
-      type: String,
-      required: false,
-    },
-    startdate: {
-      type: String,
-      required: true,
-    },
-    enddate: {
-      type: String,
-      required: true,
-    },
-    address: {
-      type: String,
-      required: false,
-    },
-    content: {
-      type: String,
-      required: true,
-    },
-    color: {
-      type: String,
-      default: '#3498db',
-    },
-    expanded: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  data() {
-    return {
-      isExpanded: this.expanded,
-      animationInProgress: false,
-    }
-  },
-  computed: {
-    timelineStyle() {
-      return {
-        '--timeline-color': this.color,
-      }
-    },
-    formattedDuration() {
-      return this.getDuration()
-    },
-  },
-  methods: {
-    toggleExpand() {
-      if (this.animationInProgress)
-        return
+<script setup lang="ts">
+import { computed, ref } from 'vue'
 
-      this.animationInProgress = true
-      this.isExpanded = !this.isExpanded
+const { title, undertitle, startdate, enddate, address, content, color } = defineProps({
+  title: { type: String, required: true },
+  undertitle: { type: String, required: false },
+  startdate: { type: String, required: true },
+  enddate: { type: String, required: true },
+  address: { type: String, required: false },
+  content: { type: String, required: true },
+  color: { type: String, default: '#3498db' },
+})
 
-      setTimeout(() => {
-        this.animationInProgress = false
-      }, 300)
-    },
-    formatDate(date) {
-      const dateObj = new Date(date.replace(/-/g, '/')) // Remplace les tirets par des slashes
-      const formatter = new Intl.DateTimeFormat('fr-FR', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric',
-      })
-      return formatter.format(dateObj)
-    },
-    getDuration() {
-      const debutArray = this.startdate.split('/')
-      const finArray = this.enddate.split('/')
+const isExpanded = ref(false)
+const animationInProgress = ref(false)
 
-      // Crée des objets Date en format 'yyyy-mm-dd'
-      const debut = new Date(`${debutArray[2]}-${debutArray[1]}-${debutArray[0]}`)
-      const fin = this.enddate.toLowerCase() === 'present' ? new Date() : new Date(`${finArray[2]}-${finArray[1]}-${finArray[0]}`)
-
-      const annees = fin.getFullYear() - debut.getFullYear()
-      const mois = fin.getMonth() - debut.getMonth()
-
-      if (annees === 0) {
-        return mois === 0 ? 'Moins d’un mois' : `${mois} mois`
-      }
-      else {
-        return `${annees} an${annees > 1 ? 's' : ''} ${mois > 0 ? `et ${mois} mois` : ''}`
-      }
-    },
-  },
+function toggleExpand() {
+  if (animationInProgress.value)
+    return
+  animationInProgress.value = true
+  isExpanded.value = !isExpanded.value
+  setTimeout(() => animationInProgress.value = false, 300)
 }
+
+const formattedDuration = computed(() => {
+  const start = new Date(startdate)
+  const end = new Date(enddate)
+  const duration = Math.abs(end.getFullYear() - start.getFullYear())
+  return `${duration} years`
+})
 </script>
 
 <template>
-  <div class="timeline-container" :style="{ ...timelineStyle, backgroundColor: 'rgba(219, 219, 219, 0.05)' }">
+  <div
+    class="timeline-container"
+    :style="{ '--timeline-color': color, 'backgroundColor': 'rgba(219, 219, 219, 0.05)' }"
+  >
     <div class="timeline-dot" />
     <div class="timeline-header" @click="toggleExpand">
       <div class="timeline-grid">
         <div class="grid-main">
           <div class="title-area">
-            <h2 class="timeline-title">
+            <h3 class="timeline-title">
               {{ title }}
-            </h2>
+            </h3>
             <h3 v-if="undertitle" class="timeline-undertitle">
               {{ undertitle }}
             </h3>
@@ -136,23 +75,29 @@ export default {
     </div>
     <transition name="expand">
       <div v-if="isExpanded" class="timeline-content">
-        <div v-html="content" />
-        <slot /> <!-- Slot pour afficher du contenu supplémentaire -->
+        <div class="content-inner" v-html="content" />
+        <slot />
       </div>
     </transition>
   </div>
 </template>
 
-  <style scoped>
-  .timeline-container {
+<style scoped>
+.timeline-container {
   position: relative;
   padding: 24px 24px 24px 36px;
   margin: 32px 0;
   border-radius: 12px;
   border: 1px solid #ddd;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border-left: 4px solid var(--timeline-color, #3498db);
+  background: rgba(219, 219, 219, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--timeline-color);
+  height: fit-content;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 1;
 }
 
 .timeline-container:hover {
@@ -209,6 +154,8 @@ export default {
   font-weight: 700;
   margin: 0;
   line-height: 1.3;
+  color: inherit;
+  opacity: 0.9;
 }
 
 .timeline-undertitle {
@@ -216,6 +163,7 @@ export default {
   font-weight: 500;
   margin: 0;
   line-height: 1.3;
+  opacity: 0.7;
 }
 
 .timeline-period {
@@ -319,11 +267,8 @@ export default {
 
 .expand-enter-active,
 .expand-leave-active {
-  transition:
-    max-height 0.35s ease,
-    opacity 0.35s ease;
+  transition: all 0.3s ease;
   max-height: 1000px;
-  overflow: hidden;
 }
 
 .expand-enter-from,
@@ -406,5 +351,32 @@ export default {
     width: 32px;
     height: 32px;
   }
+}
+
+.content-inner {
+  padding-top: 16px;
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.content-inner :deep(p) {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.content-inner :deep(strong) {
+  font-weight: 600;
+  color: inherit;
+}
+
+.content-inner :deep(ul) {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 20px;
+}
+
+.content-inner :deep(li) {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 </style>

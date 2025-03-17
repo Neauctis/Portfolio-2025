@@ -4,10 +4,11 @@ import siteConfig from '@/site-config'
 import TypedText from '@/components/TypedText.astro'
 import Card from '@/components/Card.vue'
 import Timeline from '@/components/timeline.vue'
+import ExtendedCard from '@/components/ExtendedCard.vue'
 ---
 
 <BaseLayout description={siteConfig.description}>
-  <article class="prose">
+  <article class="prose max-w-none">
     <h1 class="text-title">Aurélien Chauveau</h1>
     <h3><TypedText /></h3>
     <p>Bienvenue sur mon Portfolio.</p>
@@ -15,9 +16,11 @@ import Timeline from '@/components/timeline.vue'
       Ce Portfolio vous permet tout d'abord d'apprendre à me connaître et de découvrir certains projets sur lesquels
       j'ai pu travailler pendant mes études ou en stage.
     </p>
-    <h2 class="underline" style="text-decoration: underline #3498db;">À Propos de Moi</h2>
+    <hr class="hr-line" />
+    <h2 class="underline" style="text-decoration: underline #3498db; text-align: center;">À Propos de Moi</h2>
     <Card
       client:load
+      title="Présentation"
       content={`
       Je suis actuellement en 1ère année de BTS SIO « Services Informatiques aux Organisations – Cybersécurité »,
       option SLAM « Solutions Logicielles et Applications Métier »,
@@ -30,7 +33,10 @@ import Timeline from '@/components/timeline.vue'
       Toutes mes études dans ces domaines ont été effectuées au Lycée Polyvalent Chevrollier à Angers.
       `}
     />
-    <h2 class="underline" style="text-decoration: underline #3498db;">Formations & Éxpériences Professionnelle</h2>
+    <hr class="hr-line" />
+    <h2 class="underline" style="text-decoration: underline #3498db; text-align: center;">
+      Formations & Éxpériences Professionnelle
+    </h2>
     <Timeline
       client:load
       title="BTS SIO (SLAM)"
@@ -53,8 +59,8 @@ import Timeline from '@/components/timeline.vue'
       <div v-if="true">
         <Timeline
           client:load
-          title="Stage de 2ème Année"
-          undertitle="Écoles Militaires de Saumur"
+          title="Écoles Militaires de Saumur"
+          undertitle="Stage de 2ème Année"
           startdate="24/02/2025"
           enddate="12/04/2025"
           address="1757 Av. du Maréchal Foch, 49400 Saumur"
@@ -69,8 +75,8 @@ import Timeline from '@/components/timeline.vue'
         />
         <Timeline
           client:load
-          title="Stage de 1ère Année"
-          undertitle="Groupe ZEKAT"
+          title="Groupe ZEKAT"
+          undertitle="Stage de 1ère Année"
           startdate="05/2024"
           enddate="06/2024"
           address="31 Rue de Champigny, 49400 Bellevigne-les-Châteaux"
@@ -100,8 +106,8 @@ import Timeline from '@/components/timeline.vue'
       <div v-if="true">
         <Timeline
           client:load
-          title="Stage de 2ème Année"
-          undertitle="Groupe ZEKAT"
+          title="Groupe ZEKAT"
+          undertitle="Stage de 2ème Année"
           startdate="01/2023"
           enddate="03/2023"
           address="31 Rue de Champigny, 49400 Bellevigne-les-Châteaux"
@@ -111,8 +117,8 @@ import Timeline from '@/components/timeline.vue'
         />
         <Timeline
           client:load
-          title="Stage de 1ère Année"
-          undertitle="Etablissement NETX"
+          title="Etablissement NETX"
+          undertitle="Stage de 1ère Année"
           startdate="03/2022"
           enddate="06/2022"
           address="27 rue du portail Louis · 49400 Saumur"
@@ -122,23 +128,200 @@ import Timeline from '@/components/timeline.vue'
         />
       </div>
     </Timeline>
+    <hr class="hr-line" />
+    <h2 class="underline" style="text-decoration: underline #3498db; text-align: center;">Compétences</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <ExtendedCard
+        client:load
+        title="Développement Web"
+        icon="i-mdi-web"
+        content={`
+  <ul>
+    <li>
+      <strong>
+        Langages et Outils :
+      </strong></br>
+      HTML5, CSS (avec Tailwind, Bootstrap), PHP 8 (structure MVC), Javascript, CMS type WordPress.
+    </li>
+    <li>
+      <strong>
+        Développement Full-Stack :
+      </strong></br>
+      Réalisation de sites Web (front et back) avec le framework Laravel 11 en utilisant l'ORM Eloquent et le moteur de template Blade.
+    </li>
+    <li>
+      <strong>
+        Création d'API :
+      </strong></br>
+      API Rest avec et sans Laravel.
+    </li>
+    <li>
+      <strong>
+        Frameworks Front-End :
+      </strong></br>
+      VueJS, HTMX.
+    </li>
+  </ul>
+  `}
+      />
+
+      <ExtendedCard
+        client:load
+        title="Développement d'Applications"
+        icon="i-mdi-application-braces"
+        content={`
+  <ul>
+    <li>
+      <strong>
+        Langages et Outils :
+      </strong></br>
+      C# sous Visual Studio avec ou sans l'ORM EntityFramework Core (structure MVC).
+    </li>
+    <li>
+      <strong>
+        Paradigme :
+      </strong></br>
+      Bases de la Programmation Orientée Objet.
+    </li>
+    <li>
+      <strong>
+        Gestion de Versions :
+      </strong></br>
+      GitLab, GitHub.
+    </li>
+    <li>
+      <strong>
+        Environnements de Développement :
+      </strong></br>
+      IDE type PHPStorm, WebStorm, Visual Studio Code.
+    </li>
+    <li>
+      <strong>
+        Développement Mobile :
+      </strong></br>
+      Application mobile en Dart avec Flutter.
+    </li>
+  </ul>
+  `}
+      />
+
+      <ExtendedCard
+        client:load
+        title="Bases de Données"
+        icon="i-mdi-database"
+        content={`
+  <ul>
+    <li>
+      <strong>
+        SQL :
+      </strong></br>
+      MySQL / MariaDB, Méthode Merise sous Win'Design, Diagramme de classes UML, langage SQL (tables, droits, requêtes, vues, déclencheurs, procédures stockées).
+    </li>
+    <li>
+      <strong>
+        NoSQL :
+      </strong></br>
+      MongoDB.
+    </li>
+    <li>
+      <strong>
+        Formats de Données :
+      </strong></br>
+      JSON.
+    </li>
+  </ul>
+  `}
+      />
+
+      <ExtendedCard
+        client:load
+        title="Systèmes et Réseaux"
+        icon="i-mdi-server-network"
+        content={`
+  <ul>
+    <li>
+      <strong>
+        Serveurs :
+      </strong></br>
+      Mise en place de serveurs distants Web et bases de données (Linux Debian et Windows) avec Apache, GLPI, MySQL, Docker.
+    </li>
+    <li>
+      <strong>
+        Sécurisation :
+      </strong></br>
+      Sécurisation des serveurs (échange de clés), utilisation de SSH.
+    </li>
+    <li>
+      <strong>
+        Gestion des Logs :
+      </strong></br>
+      Surveillance et analyse des logs.
+    </li>
+    <li>
+      <strong>
+        Administration :
+      </strong></br>
+      Gestion de serveur en ligne de commande, utilisation de WSL2 sous Windows.
+    </li>
+  </ul>
+  `}
+      />
+
+      <ExtendedCard
+        client:load
+        title="Cybersécurité"
+        icon="i-mdi-shield-lock"
+        content={`
+  <ul>
+    <li>
+      <strong>
+        Formation :
+      </strong></br>
+      Certification Secnum Académie.
+    </li>
+    <li>
+      <strong>
+        Principes de Sécurité :
+      </strong></br>
+      Méthode OWASP.
+    </li>
+  </ul>
+  `}
+      />
+
+      <ExtendedCard
+        client:load
+        title="Gestion de Projet"
+        icon="i-mdi-clipboard-check"
+        content={`
+  <ul>
+    <li>
+      <strong>
+        Outils et Méthodes :
+      </strong></br>
+      Planification Trello, outils de versionning Git, Diagramme de Gantt, GitLab, GitHub.
+    </li>
+  </ul>
+  `}
+      />
+    </div>
+    <hr class="hr-line" />
+    <h2 class="underline" style="text-decoration: underline #3498db; text-align: center;">Contact</h2>
+    <Card
+      client:load
+      title="Contact Information"
+      content={`
+        <ul>
+          <li><strong>Email: </strong>aure.chv49@gmail.com</li>
+          <li><strong>Télephone: </strong>06 37 54 53 02</li>
+          <li><strong>Adresse: </strong>49000 Angers, France</li>
+        </ul>
+      `}
+    />
   </article>
-  <p>
-    By the way, this theme use the <a target="_blank" href="https://unocss.dev/">UnoCSS</a> for style, it's fast.
-  </p>
-  <p>
-    Visit it
-    <a target="_blank" href="https://github.com/kevinwong865/astro-theme-vitesse"> on GitHub </a>
-    to fork the repository, read the docs or one-click deploy on Netlify.
-  </p>
-  <p>
-    If you like Vitesse theme for Astro, please
-    <a target="_blank" href="https://github.com/kevinwong865"> click follow </a>
-    for me.
-  </p>
   <hr class="hr-line" />
-  <p>Find me on</p>
-  <p class="flex gap-x-4 gap-y-2 flex-wrap">
+  <p class="flex gap-x-4 gap-y-2 flex-wrap justify-evenly">
     {
       siteConfig.socialLinks.map((link) => (
         <a aria-label={link.text} href={link.href} target="_blank" class="prose-link">
@@ -147,11 +330,5 @@ import Timeline from '@/components/timeline.vue'
         </a>
       ))
     }
-  </p>
-  <p>
-    If you have any questions, please email me at
-    <a prose-link aria-label={siteConfig.email} href={`mailto:${siteConfig.email}`}>
-      {siteConfig.email}
-    </a>.
   </p>
 </BaseLayout>

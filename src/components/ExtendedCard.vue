@@ -1,24 +1,36 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 defineProps({
-  title: { type: String, required: false },
+  title: { type: String, required: true },
   content: { type: String, required: true },
-  icon: { type: String, required: false },
   color: { type: String, default: '#3498db' },
+  icon: { type: String, required: false },
 })
+
+const isExpanded = ref(false)
+const toggleExpand = () => isExpanded.value = !isExpanded.value
 </script>
 
 <template>
-  <div class="timeline-style-card" :style="{ '--card-color': color }">
+  <div class="timeline-style-card" :class="{ 'is-expanded': isExpanded }" :style="{ '--card-color': color }">
     <div class="card-dot" />
-    <div class="card-header">
+    <div class="card-header" @click="toggleExpand">
       <div class="header-content">
         <i v-if="icon" :class="icon" class="card-icon" />
         <h3 class="card-title">
           {{ title }}
         </h3>
+        <div class="toggle-button" :class="{ expanded: isExpanded }">
+          <span class="toggle-icon" />
+        </div>
       </div>
     </div>
-    <div class="content-inner" v-html="content" />
+    <transition name="expand">
+      <div v-if="isExpanded" class="card-content">
+        <div class="content-inner" v-html="content" />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -45,6 +57,10 @@ defineProps({
   transform: translateY(-2px);
 }
 
+.is-expanded {
+  z-index: 2;
+}
+
 .card-dot {
   position: absolute;
   left: -12px;
@@ -61,14 +77,16 @@ defineProps({
   display: flex;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
 }
 
 .card-icon {
   font-size: 1.5rem;
-  color: #3498db;
+  color: var(--color, #3498db);
 }
 
 .card-title {
+  flex-grow: 1;
   margin: 0;
   font-size: 1.35rem;
   font-weight: 700;
@@ -77,10 +95,49 @@ defineProps({
   opacity: 0.9;
 }
 
+.toggle-button {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-icon {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #666;
+  border-bottom: 2px solid #666;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+  position: relative;
+  top: -2px;
+}
+
+.toggle-button.expanded .toggle-icon {
+  transform: rotate(225deg);
+  top: 2px;
+}
+
+.card-content {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
 .content-inner {
   padding-top: 16px;
   line-height: 1.75;
   font-size: 1rem;
+}
+
+.content-inner :deep(ul) {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.content-inner :deep(li) {
+  margin-bottom: 12px;
 }
 
 .content-inner :deep(p) {
@@ -102,5 +159,17 @@ defineProps({
 .content-inner :deep(li) {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
+
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 0.3s ease;
+  max-height: 1000px;
+}
+
+.expand-enter-from,
+.expand-leave-to {
+  max-height: 0;
+  opacity: 0;
 }
 </style>
