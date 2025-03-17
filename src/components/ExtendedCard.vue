@@ -4,7 +4,6 @@ import { ref } from 'vue'
 defineProps({
   title: { type: String, required: true },
   content: { type: String, required: true },
-  color: { type: String, default: '#3498db' },
   icon: { type: String, required: false },
 })
 
@@ -13,14 +12,14 @@ const toggleExpand = () => isExpanded.value = !isExpanded.value
 </script>
 
 <template>
-  <div class="timeline-style-card" :class="{ 'is-expanded': isExpanded }" :style="{ '--card-color': color }">
+  <div class="timeline-style-card" :class="{ 'is-expanded': isExpanded }">
     <div class="card-dot" />
     <div class="card-header" @click="toggleExpand">
       <div class="header-content">
         <i v-if="icon" :class="icon" class="card-icon" />
-        <h3 class="card-title">
+        <p class="card-title">
           {{ title }}
-        </h3>
+        </p>
         <div class="toggle-button" :class="{ expanded: isExpanded }">
           <span class="toggle-icon" />
         </div>
@@ -40,11 +39,18 @@ const toggleExpand = () => isExpanded.value = !isExpanded.value
   padding: 24px 24px 24px 36px;
   margin: 32px 0;
   border-radius: 12px;
-  border: 1px solid #ddd;
-  background: rgba(219, 219, 219, 0.05);
+  border: 1px solid;
+  border-color: #333333;
+  html.dark & {
+    border-color: #ffffff;
+    border-left: 4px solid #ffffff;
+  }
+  background: transparent;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border-left: 4px solid var(--card-color);
+  border-left: 4px solid #333333;
   height: fit-content;
   isolation: isolate;
   transform-style: preserve-3d;
@@ -68,9 +74,12 @@ const toggleExpand = () => isExpanded.value = !isExpanded.value
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: var(--card-color);
-  border: 4px solid #ffffff;
+  background-color: #333333;
+  border: 4px solid var(--bg-main, #ffffff);
   box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+  html.dark & {
+    background-color: #ffffff;
+  }
 }
 
 .header-content {
@@ -82,7 +91,10 @@ const toggleExpand = () => isExpanded.value = !isExpanded.value
 
 .card-icon {
   font-size: 1.5rem;
-  color: var(--color, #3498db);
+  color: #333333;
+  html.dark & {
+    background-color: #ffffff;
+  }
 }
 
 .card-title {
@@ -92,7 +104,10 @@ const toggleExpand = () => isExpanded.value = !isExpanded.value
   font-weight: 700;
   line-height: 1.3;
   color: inherit;
-  opacity: 0.9;
+  color: #333333;
+  html.dark & {
+    color: #ffffff;
+  }
 }
 
 .toggle-button {

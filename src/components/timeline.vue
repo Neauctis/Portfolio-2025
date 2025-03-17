@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-const { title, undertitle, startdate, enddate, address, content, color } = defineProps({
+const { title, undertitle, startdate, enddate, address, content } = defineProps({
   title: { type: String, required: true },
   undertitle: { type: String, required: false },
   startdate: { type: String, required: true },
   enddate: { type: String, required: true },
   address: { type: String, required: false },
   content: { type: String, required: true },
-  color: { type: String, default: '#3498db' },
 })
 
 const isExpanded = ref(false)
@@ -33,19 +32,18 @@ const formattedDuration = computed(() => {
 <template>
   <div
     class="timeline-container"
-    :style="{ '--timeline-color': color, 'backgroundColor': 'rgba(219, 219, 219, 0.05)' }"
   >
     <div class="timeline-dot" />
     <div class="timeline-header" @click="toggleExpand">
       <div class="timeline-grid">
         <div class="grid-main">
           <div class="title-area">
-            <h3 class="timeline-title">
+            <p class="timeline-title">
               {{ title }}
-            </h3>
-            <h3 v-if="undertitle" class="timeline-undertitle">
+            </p>
+            <p v-if="undertitle" class="timeline-undertitle">
               {{ undertitle }}
-            </h3>
+            </p>
           </div>
           <div class="details-area">
             <div class="timeline-period">
@@ -88,11 +86,19 @@ const formattedDuration = computed(() => {
   padding: 24px 24px 24px 36px;
   margin: 32px 0;
   border-radius: 12px;
-  border: 1px solid #ddd;
-  background: rgba(219, 219, 219, 0.05);
+  border-width: 1px;
+  border-style: solid;
+  background: transparent;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border-left: 4px solid var(--timeline-color);
+  border-color: #333333;
+  border-left: 4px solid #333333;
+  html.dark & {
+    border-color: #ffffff;
+    border-left: 4px solid #ffffff;
+  }
   height: fit-content;
   isolation: isolate;
   transform-style: preserve-3d;
@@ -112,8 +118,11 @@ const formattedDuration = computed(() => {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: var(--timeline-color, #3498db);
-  border: 4px solid #ffffff;
+  background-color: #333333;
+  html.dark & {
+    background-color: #ffffff;
+  }
+  border: 4px solid var(--bg-main, #ffffff);
   box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
   z-index: 2;
 }
@@ -155,7 +164,10 @@ const formattedDuration = computed(() => {
   margin: 0;
   line-height: 1.3;
   color: inherit;
-  opacity: 0.9;
+  color: #333333;
+  html.dark & {
+    color: #ffffff;
+  }
 }
 
 .timeline-undertitle {
@@ -163,7 +175,10 @@ const formattedDuration = computed(() => {
   font-weight: 500;
   margin: 0;
   line-height: 1.3;
-  opacity: 0.7;
+  color: #333333;
+  html.dark & {
+    color: #ffffff;
+  }
 }
 
 .timeline-period {
@@ -175,8 +190,15 @@ const formattedDuration = computed(() => {
 }
 
 .date-chip {
-  border: 1px solid #ddd;
-  color: #3498db;
+  border: 1px solid;
+  border-color: #333333;
+  html.dark & {
+    border-color: #ffffff;
+  }
+  color: #333333;
+  html.dark & {
+    color: #ffffff;
+  }
   padding: 4px 12px;
   border-radius: 16px;
   font-size: 0.85rem;
@@ -191,8 +213,15 @@ const formattedDuration = computed(() => {
 }
 
 .duration-badge {
-  border: 1px solid #ddd;
-  color: #3498db;
+  border: 1px solid;
+  border-color: #333333;
+  html.dark & {
+    border-color: #ffffff;
+  }
+  color: #333333;
+  html.dark & {
+    color: #ffffff;
+  }
   padding: 4px 12px;
   margin: 0;
   border-radius: 16px;
@@ -237,7 +266,7 @@ const formattedDuration = computed(() => {
 }
 
 .toggle-button:hover {
-  background-color: #3498db;
+  background-color: #333333;
 }
 
 .toggle-icon {
@@ -260,7 +289,11 @@ const formattedDuration = computed(() => {
 .timeline-content {
   padding-top: 18px;
   margin-top: 16px;
-  border-top: 1px solid #ecf0f1;
+  border-top: 1px solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  .dark & {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
   line-height: 1.6;
   font-size: 0.95rem;
 }

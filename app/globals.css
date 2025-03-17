@@ -1,0 +1,30 @@
+// ...existing code...
+
+/* Ajout des styles pour le texte */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #ffffff;
+  }
+  body {
+    color: var(--text-color);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: #000000;
+  }
+  body {
+    color: var(--text-color);
+  }
+}
+
+/* Modification de la couleur de bordure des cartes */
+.card {
+  border-color: var(--text-color);
+}
+
+/* Si vous utilisez Tailwind, ajoutez ces classes utilitaires */
+.text-default {
+  color: var(--text-color);
+}

@@ -10,14 +10,14 @@ import ExtendedCard from '@/components/ExtendedCard.vue'
 <BaseLayout description={siteConfig.description}>
   <article class="prose max-w-none">
     <h1 class="text-title">Aurélien Chauveau</h1>
-    <h3><TypedText /></h3>
+    <h4><TypedText /></h4>
     <p>Bienvenue sur mon Portfolio.</p>
     <p>
       Ce Portfolio vous permet tout d'abord d'apprendre à me connaître et de découvrir certains projets sur lesquels
       j'ai pu travailler pendant mes études ou en stage.
     </p>
     <hr class="hr-line" />
-    <h2 class="underline" style="text-decoration: underline #3498db; text-align: center;">À Propos de Moi</h2>
+    <h2 class="underline text-main" style="text-align: center;">À Propos de Moi</h2>
     <Card
       client:load
       title="Présentation"
@@ -34,9 +34,7 @@ import ExtendedCard from '@/components/ExtendedCard.vue'
       `}
     />
     <hr class="hr-line" />
-    <h2 class="underline" style="text-decoration: underline #3498db; text-align: center;">
-      Formations & Éxpériences Professionnelle
-    </h2>
+    <h2 class="underline text-main" style="text-align: center;">Formations & Éxpériences Professionnelle</h2>
     <Timeline
       client:load
       title="BTS SIO (SLAM)"
@@ -129,7 +127,7 @@ import ExtendedCard from '@/components/ExtendedCard.vue'
       </div>
     </Timeline>
     <hr class="hr-line" />
-    <h2 class="underline" style="text-decoration: underline #3498db; text-align: center;">Compétences</h2>
+    <h2 class="underline text-main" style="text-align: center;">Compétences</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <ExtendedCard
@@ -307,7 +305,7 @@ import ExtendedCard from '@/components/ExtendedCard.vue'
       />
     </div>
     <hr class="hr-line" />
-    <h2 class="underline" style="text-decoration: underline #3498db; text-align: center;">Contact</h2>
+    <h2 class="underline text-main" style="text-align: center;">Contact</h2>
     <Card
       client:load
       title="Contact Information"

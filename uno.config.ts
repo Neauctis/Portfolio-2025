@@ -12,10 +12,9 @@ import {
 export default defineConfig({
   shortcuts: [
     {
-      'bg-main': 'bg-hex-eef5fc dark:bg-hex-0d1117',
-      'text-main': 'text-hex-555555 dark:text-hex-bbbbbb',
-      'text-link': 'text-dark dark:text-white ',
-      'border-main': 'border-truegray-300 dark:border-truegray-600',
+      'text-main': 'text-hex-333333 dark:text-hex-ffffff',
+      'text-link': 'text-hex-333333 dark:text-hex-ffffff',
+      'border-main': 'border-hex-333333 dark:border-hex-ffffff',
     },
     {
       'text-title': 'text-link text-4xl font-800',
