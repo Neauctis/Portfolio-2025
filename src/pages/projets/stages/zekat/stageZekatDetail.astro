@@ -74,6 +74,9 @@ import CardImage from '@/components/CardImage.vue'
       `}
       image="/projets/zekat/app_mp.png"
     />
+  </article>
+  <hr class="hr-line" />
+  <p class="flex gap-x-4 gap-y-2 flex-wrap justify-evenly">
     {
       siteConfig.socialLinks.map((link) => (
         <a aria-label={link.text} href={link.href} target="_blank" class="prose-link">
@@ -82,5 +85,5 @@ import CardImage from '@/components/CardImage.vue'
         </a>
       ))
     }
-  </article>
+  </p>
 </BaseLayout>
