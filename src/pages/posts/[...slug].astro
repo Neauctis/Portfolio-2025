@@ -18,30 +18,59 @@ export async function getStaticPaths() {
 type Props = { post: CollectionPosts }
 
 const { post } = Astro.props
-const { title, image, description, date, duration, tag } = post.data
+const { title, image, description, date, duration, tag, company, location, skills, images } = post.data
 
 const { Content } = await post.render()
-
-function getDate(date: string) {
-  return new Date(date).toISOString()
-}
 ---
 
 <BaseLayout title={title} description={description} pageType="article">
-  <article class="prose">
-    <h1>{title}</h1>
-    <p op-50>
-      {date && <time datetime={getDate(date)}>{date.split(',')}</time>}
-      {duration && <span>· {duration}</span>}
-      {tag && <span>· {tag}</span>}
-    </p>
-    {
-      image && (
-        <p>
-          <img width="640" height="360" src={image.src} alt={image.alt || ''} />
-        </p>
-      )
-    }
-    <Content />
+  <article class="prose mx-auto max-w-4xl px-4">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold">{title}</h1>
+      <div class="mt-4 flex flex-wrap gap-4 text-sm text-gray-600">
+        {date && <time>{date}</time>}
+        {duration && <span>· Durée: {duration}</span>}
+        {company && <span>· Entreprise: {company}</span>}
+        {location && <span>· Lieu: {location}</span>}
+      </div>
+      {image && (
+        <img 
+          class="mt-6 w-full rounded-lg object-cover"
+          width="800" 
+          height="400" 
+          src={image.src} 
+          alt={image.alt || ''} 
+        />
+      )}
+    </header>
+
+    {skills && skills.length > 0 && (
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold">Compétences développées</h2>
+        <div class="mt-2 flex flex-wrap gap-2">
+          {skills.map(skill => (
+            <span class="rounded-full bg-gray-100 px-3 py-1 text-sm">{skill}</span>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="prose-lg">
+      <Content />
+    </div>
+
+    {images && images.length > 0 && (
+      <div class="mt-8 grid gap-4 sm:grid-cols-2">
+        {images.map(img => (
+          <img
+            class="rounded-lg object-cover"
+            width="400"
+            height="300"
+            src={img.src}
+            alt={img.alt}
+          />
+        ))}
+      </div>
+    )}
   </article>
 </BaseLayout>

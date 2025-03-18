@@ -20,9 +20,11 @@ const toggleExpand = () => isExpanded.value = !isExpanded.value
         <p class="card-title">
           {{ title }}
         </p>
-        <div class="toggle-button" :class="{ expanded: isExpanded }">
-          <span class="toggle-icon" />
-        </div>
+        <button class="magnetic-item">
+          <div class="toggle-button" prose-link :class="{ expanded: isExpanded }">
+            <span class="toggle-icon" />
+          </div>
+        </button>
       </div>
     </div>
     <transition name="expand">
@@ -41,13 +43,9 @@ const toggleExpand = () => isExpanded.value = !isExpanded.value
   border-radius: 12px;
   border: 1px solid;
   border-color: #333333;
-  html.dark & {
-    border-color: #ffffff;
-    border-left: 4px solid #ffffff;
-  }
   background: transparent;
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border-left: 4px solid #333333;
@@ -56,6 +54,10 @@ const toggleExpand = () => isExpanded.value = !isExpanded.value
   transform-style: preserve-3d;
   position: relative;
   z-index: 1;
+  html.dark & {
+    border-color: #ffffff;
+    border-left: 4px solid #ffffff;
+  }
 }
 
 .timeline-style-card:hover {
@@ -111,19 +113,25 @@ const toggleExpand = () => isExpanded.value = !isExpanded.value
 }
 
 .toggle-button {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .toggle-icon {
   display: inline-block;
   width: 8px;
   height: 8px;
-  border-right: 2px solid #666;
-  border-bottom: 2px solid #666;
+  border-right: 2px solid #333333;
+  border-bottom: 2px solid #333333;
+  html.dark & {
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+  }
   transform: rotate(45deg);
   transition: transform 0.3s ease;
   position: relative;

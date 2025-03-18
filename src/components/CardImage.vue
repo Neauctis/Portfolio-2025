@@ -1,8 +1,10 @@
 <script setup lang="ts">
 defineProps({
-  title: { type: String, required: false },
-  content: { type: String, required: true },
+  title: { type: String, required: true },
+  contentup: { type: String, required: false },
   icon: { type: String, required: false },
+  image: { type: String, required: false },
+  contentdown: { type: String, required: false },
 })
 </script>
 
@@ -17,7 +19,9 @@ defineProps({
         </p>
       </div>
     </div>
-    <div class="content-inner" v-html="content" />
+    <div class="content-inner" v-html="contentup" />
+    <img v-if="image" :src="image" :alt="title" class="card-image">
+    <div class="content-inner" v-html="contentdown" />
   </div>
 </template>
 
@@ -46,13 +50,6 @@ defineProps({
   z-index: 1;
 }
 
-.timeline-style-card {
-  border-color: #333333;
-  html.dark & {
-    border-color: #ffffff;
-  }
-}
-
 .timeline-style-card:hover {
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
@@ -76,7 +73,6 @@ defineProps({
 .header-content {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .card-icon {
@@ -103,6 +99,21 @@ defineProps({
   padding-top: 16px;
   line-height: 1.75;
   font-size: 1rem;
+}
+
+.card-image {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  height: auto;
+  margin: 16px auto 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card-image:hover {
+  transform: scale(1.02);
 }
 
 .content-inner :deep(p) {

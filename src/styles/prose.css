@@ -1,5 +1,6 @@
 .prose {
   --at-apply: text-base lh-1.75 mb-16 max-w-none sm: min-h-50vh min-h-38vh;
+  color: #333333;
 }
 .prose a {
   --at-apply: prose-link;
@@ -75,6 +76,7 @@
   margin-top: 1.6em;
   margin-bottom: 1.6em;
   padding-left: 1em;
+  border-left-color: #333333;
 }
 .prose blockquote p:first-of-type::before {
   content: open-quote;
@@ -129,7 +131,7 @@
   content: '`';
 }
 .prose a code {
-  color: #111827;
+  color: #333333;
 }
 .prose pre {
   color: #e5e7eb;
@@ -173,7 +175,7 @@
 .prose thead {
   font-weight: 600;
   border-bottom-width: 1px;
-  border-bottom-color: #8882;
+  border-bottom-color: #333333;
 }
 .prose thead th {
   vertical-align: bottom;
@@ -183,7 +185,8 @@
 }
 .prose tbody tr {
   border-bottom-width: 1px;
-  border-bottom-color: #8882;
+  border-bottom-color: #333333;
+  opacity: 0.3;
 }
 .prose tbody tr:last-child {
   border-bottom-width: 0;
@@ -474,4 +477,24 @@
 }
 .prose-sm > :last-child {
   margin-bottom: 0;
+}
+
+html.dark .prose {
+  color: #ffffff;
+}
+
+html.dark .prose thead {
+  border-bottom-color: #ffffff;
+}
+
+html.dark .prose tbody tr {
+  border-bottom-color: #ffffff;
+}
+
+html.dark .prose blockquote {
+  border-left-color: #ffffff;
+}
+
+html.dark .prose a code {
+  color: #ffffff;
 }

@@ -64,11 +64,11 @@ const formattedDuration = computed(() => {
             </div>
           </div>
         </div>
-        <div class="toggle-area">
+        <button class="toggle-area">
           <div class="toggle-button" prose-link :class="{ expanded: isExpanded }">
             <span class="toggle-icon" />
           </div>
-        </div>
+        </button>
       </div>
     </div>
     <transition name="expand">
@@ -89,8 +89,8 @@ const formattedDuration = computed(() => {
   border-width: 1px;
   border-style: solid;
   background: transparent;
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border-color: #333333;
@@ -265,16 +265,16 @@ const formattedDuration = computed(() => {
   transition: all 0.3s ease;
 }
 
-.toggle-button:hover {
-  background-color: #333333;
-}
-
 .toggle-icon {
   display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid #95a5a6;
-  border-bottom: 2px solid #95a5a6;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #333333;
+  border-bottom: 2px solid #333333;
+  html.dark & {
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+  }
   transform: rotate(45deg);
   transition: transform 0.3s ease;
   position: relative;

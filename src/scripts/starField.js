@@ -35,8 +35,46 @@ export function initStarField() {
     container.append(...stars)
   }
 
+  function createNebulas() {
+    const nebulas = []
+    const NEBULA_COUNT = 2 // Réduit à 2 nébuleuses
+
+    for (let i = 0; i < NEBULA_COUNT; i++) {
+      const nebula = document.createElement('div')
+      nebula.className = 'nebula'
+
+      // Tailles plus petites
+      const size = 200 + Math.random() * 200
+      nebula.style.width = `${size}px`
+      nebula.style.height = `${size}px`
+
+      nebula.style.left = `${(i * 40 + Math.random() * 30)}%`
+      nebula.style.top = `${30 + Math.random() * 40}%`
+
+      nebula.dataset.baseX = nebula.style.left
+      nebula.dataset.baseY = nebula.style.top
+
+      container.appendChild(nebula)
+      nebulas.push(nebula)
+    }
+    return nebulas
+  }
+
+  const nebulas = createNebulas()
+
   function animate() {
     const time = Date.now() * 0.001
+
+    // Animation des nébuleuses optimisée (moins fréquente)
+    if (time % 4 < 0.1) { // Mise à jour toutes les 4 secondes
+      nebulas.forEach((nebula) => {
+        const x = Math.sin(time * 0.05) * 5 // Mouvement plus lent
+        const y = Math.cos(time * 0.05) * 5
+
+        // Animation simplifiée
+        nebula.style.transform = `translate3d(${x}px, ${y}px, 0)`
+      })
+    }
 
     stars.forEach((star) => {
       const speed = Number(star.dataset.speed)
@@ -102,5 +140,7 @@ export function initStarField() {
   return () => {
     cancelAnimationFrame(rafId)
     container.innerHTML = ''
+    stars.length = 0
+    nebulas.length = 0
   }
 }

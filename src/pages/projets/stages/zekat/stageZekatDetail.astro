@@ -1,0 +1,86 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import siteConfig from '@/site-config'
+import TypedText from '@/components/TypedText.astro'
+import Card from '@/components/Card.vue'
+import Timeline from '@/components/timeline.vue'
+import ExtendedCard from '@/components/ExtendedCard.vue'
+import CardImage from '@/components/CardImage.vue'
+---
+
+<BaseLayout description={siteConfig.description}>
+  <article class="prose max-w-none">
+    <h1 class="text-title">Stage Groupe Zekat</h1>
+    <h4>Image TV</h4>
+    <hr class="hr-line" />
+    <h2 class="underline text-main" style="text-align: center;">Mission</h2>
+    <Card
+      client:load
+      title="Problématique"
+      content={`
+      Des téléviseurs connectés se trouvent sur 3 sites différents du Groupe et ont pour objectif d’afficher des informations concernant l’entreprise.
+      Le problème est qu’il était difficile de mettre à jour les informations qui apparaissent sur ces téléviseurs.
+      Face à cette problématique, j’ai donc proposé de créer une application que la chargée de communication pourra utiliser pour ajouter, modifier ou supprimer des images qui seront stockées dans une base de données.
+      Il faut également créer des sites Web capables d’afficher les images stockées dans la base de données sous forme de diaporama.
+      Chaque site Zekat en possédera un différent.
+      La base de données ainsi que les sites Web seront stockés sur un serveur Linux (Debian 12) que je vais devoir créer.
+
+      J’ai donc commencé le lundi 3 juin le projet en commençant par le développement de l’application.
+      `}
+    />
+    <Card
+      client:load
+      title="Application"
+      content={`
+      Application
+      J’ai décidé de développer en C# car c’est ce que nous utilisons en cours et je me projetais déjà sur quels outils et quelles méthodes vues en cours utiliser.
+      Je ne voyais donc pas d’inconvénient à utiliser du C#.</br>
+
+      </br>J’ai donc réfléchi à ce que j’allais mettre sur l’application,
+      à la façon dont l’utilisateur pourra ajouter des images,
+      aux informations qu’il devra renseigner,
+      à ce qu’il aura besoin de voir sur l’application,
+      à la sécurité à mettre en place, etc.`}
+    />
+    <hr class="hr-line" />
+    <h2 class="underline text-main" style="text-align: center;">Détails de l'application</h2>
+    <CardImage
+      title="Fenêtre Connexion"
+      contentup={`
+      J’ai donc commencé par créer une fenêtre de connexion qui demandera à l’utilisateur un mot de passe </br>
+      (il n’y a qu’un seul mot de passe stocké et hashé dans la base de données).
+      `}
+      image="/public/projets/zekat/details/app_conn.png"
+    />
+    <CardImage
+      title="Fenêtre Menu Principal"
+      contentup={`
+      Lorsque l’utilisateur entre le bon mot de passe, il accède à la page du menu principal.
+      `}
+      image="/public/projets/zekat/details/app_mp.png"
+      contentdown={`
+      Il y a une barre de navigation en haut qui donne 3 options à l’utilisateur.
+        <ul>
+          <li><strong>Ajouter : </strong>Permet d’ajouter dans la base de données des images se trouvant sur le PC de l’utilisateur.</li>
+          <li><strong>Modifier : </strong>Permet de modifier le titre, la durée d’affichage en secondes, l'ordre d’affichage ainsi que le site Zekat où apparaîtra l'image.</li>
+          <li><strong>Supprimer : </strong>Permet de supprimer les images dans la base de données.</li>
+        </ul>
+      `}
+    />
+    <CardImage
+      title="Fenêtre Menu Principal"
+      contentup={`
+      Lorsque l’utilisateur entre le bon mot de passe, il accède à la page du menu principal.
+      `}
+      image="/public/projets/zekat/details/app_mp.png"
+    />
+    {
+      siteConfig.socialLinks.map((link) => (
+        <a aria-label={link.text} href={link.href} target="_blank" class="prose-link">
+          <i class:list={[link.icon]} />
+          {link.text}
+        </a>
+      ))
+    }
+  </article>
+</BaseLayout>

@@ -22,7 +22,7 @@ html:not(.dark) {
 }
 
 #nprogress .bar {
-  background: #333333;
+  background: #000000;
   opacity: 0.75;
   position: fixed;
   z-index: 999;
@@ -37,6 +37,20 @@ html:not(.dark) {
 
 img {
   --at-apply: rd-1.5;
+  filter: brightness(0.9) contrast(1.1) saturate(0.9);
+  transition: filter 0.3s ease;
+}
+
+img:hover {
+  filter: brightness(1) contrast(1) saturate(1);
+}
+
+html.dark img {
+  filter: brightness(0.8) contrast(1.2) saturate(0.85);
+}
+
+html.dark img:hover {
+  filter: brightness(0.9) contrast(1.1) saturate(0.95);
 }
 
 article {
@@ -66,4 +80,91 @@ html.dark::view-transition-old(root) {
 }
 html.dark::view-transition-new(root) {
   z-index: 1;
+}
+
+/* Police par défaut */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-feature-settings: "liga" 1, "calt" 1; /* Activer les ligatures pour un rendu plus moderne */
+}
+
+/* Police pour le code */
+code, pre {
+  font-family: 'Space Grotesk', monospace;
+  font-feature-settings: "ss01" 1, "ss02" 1, "ss03" 1; /* Utiliser les variantes stylisées */
+}
+
+/* Police pour les titres */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em; /* Espacement négatif pour un look plus moderne */
+}
+
+/* Ajustements spécifiques pour les grands titres */
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Style pour les liens et éléments interactifs */
+.nav-link,
+.prose-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+}
+
+/* Base colors */
+:root {
+  --text-color: #333333;
+  --bg-color: #ffffff;
+}
+
+html.dark {
+  --text-color: #ffffff;
+  --bg-color: #000000;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+/* Override any existing color definitions */
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6,
+.prose p, .prose li, .prose blockquote,
+.nav-link, .prose-link {
+  color: #333333;
+  html.dark & {
+    color: #ffffff;
+  }
+}
+
+.prose hr, .prose blockquote {
+  border-color: #333333;
+  opacity: 0.3;
+  html.dark & {
+    border-color: #ffffff;
+  }
+}
+
+.prose ul > li::before {
+  background-color: #333333;
+  html.dark & {
+    background-color: #ffffff;
+  }
+}
+
+.prose code {
+  color: #333333;
+  html.dark & {
+    color: #ffffff;
+  }
 }

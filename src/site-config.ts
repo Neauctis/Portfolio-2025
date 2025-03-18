@@ -48,36 +48,28 @@ export const siteConfig = {
         href: '/',
       },
       {
-        text: 'Blog',
-        href: '/blog',
-      },
-      {
-        text: 'Notes',
-        href: '/blog/notes',
-      },
-      {
-        text: 'Talks',
-        href: '/blog/talks',
-      },
-      {
-        text: 'Projects',
-        href: '/projects',
+        text: 'Projets',
+        href: '/projets',
       },
     ],
   },
   page: {
-    blogLinks: [
+    projLinks: [
       {
-        text: 'Blog',
-        href: '/blog',
+        text: 'Tout /',
+        href: '/projets',
       },
       {
-        text: 'Notes',
-        href: '/blog/notes',
+        text: 'Stages /',
+        href: '/projets/stages',
       },
       {
-        text: 'Talks',
-        href: '/blog/talks',
+        text: 'AP /',
+        href: '/projets/ap',
+      },
+      {
+        text: 'Personnel /',
+        href: '/projets/personnel',
       },
     ],
   },

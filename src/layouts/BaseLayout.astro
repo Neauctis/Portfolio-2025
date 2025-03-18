@@ -5,6 +5,7 @@ import BaseHead from '@/components/BaseHead.astro'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
+import '../styles/cursor-effect.css'
 
 const { ...head } = Astro.props
 ---
@@ -14,8 +15,12 @@ const { ...head } = Astro.props
   <head>
     <BaseHead {...head} />
     <ViewTransitions />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-main text-main min-h-screen font-sans w-full">
+  <body class="bg-main text-main min-h-screen font-['Inter'] w-full" style="cursor: none;">
     <div class="starfield"></div>
     <Header client:load />
     <main class="max-w-5xl mx-auto sm:pt-36 pt-26 pb-16 px-6">
@@ -27,16 +32,11 @@ const { ...head } = Astro.props
 </html>
 
 <script>
+  import { initCursorEffect } from '../scripts/cursor-effect'
   import { initStarField } from '../scripts/starField'
 
-  let cleanup: (() => void) | undefined
-
   document.addEventListener('astro:page-load', () => {
-    cleanup?.()
-    cleanup = initStarField()
-  })
-
-  document.addEventListener('astro:before-swap', () => {
-    cleanup?.()
+    initStarField()
+    initCursorEffect()
   })
 </script>

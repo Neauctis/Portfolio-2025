@@ -13,25 +13,25 @@ const pages = defineCollection({
   }),
 })
 
-const blog = defineCollection({
+const projets = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
     duration: z.string().optional(),
+    company: z.string().optional(),
+    location: z.string().optional(),
+    skills: z.array(z.string()).optional(),
+    images: z.array(z.object({
+      src: z.string(),
+      alt: z.string(),
+    })).optional(),
     image: z
       .object({
         src: z.string(),
         alt: z.string(),
       })
       .optional(),
-    date: z
-      .string()
-      .or(z.date())
-      .transform((val: string | number | Date) => new Date(val).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })),
+    date: z.string(),
     draft: z.boolean().default(false).optional(),
     lang: z.string().default('en-US').optional(),
     tag: z.string().optional().optional(),
@@ -40,4 +40,4 @@ const blog = defineCollection({
   }),
 })
 
-export const collections = { pages, blog }
+export const collections = { pages, projets }

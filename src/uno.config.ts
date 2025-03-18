@@ -15,15 +15,16 @@ export default defineConfig({
       'text-main': 'text-hex-333333 dark:text-hex-ffffff',
       'text-link': 'text-hex-333333 dark:text-hex-ffffff',
       'border-main': 'border-hex-333333 dark:border-hex-ffffff',
+      'bg-main': 'bg-hex-ffffff dark:bg-hex-000000',
     },
     {
-      'text-title': 'text-link text-4xl font-800',
-      'nav-link': 'text-link opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer',
-      'prose-link': 'text-link text-nowrap cursor-pointer border-b-1 !border-opacity-30 hover:!border-opacity-100 border-neutral-500 hover:border-truegray-600 dark:border-neutral-500 hover:dark:border-truegray-400 transition-border-color duration-200 decoration-none',
-      'container-link': 'p-2 opacity-60 hover:opacity-100 cursor-pointer hover:bg-truegray-500 !bg-opacity-10 transition-colors transition-opacity duration-200',
+      'text-title': 'text-hex-333333 dark:text-hex-ffffff text-4xl font-800',
+      'nav-link': 'text-hex-333333 dark:text-hex-ffffff opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer',
+      'prose-link': 'text-hex-333333 dark:text-hex-ffffff text-nowrap cursor-pointer border-b-1 border-hex-333333 dark:border-hex-ffffff hover:border-hex-333333 dark:hover:border-hex-ffffff transition-border-color duration-200 decoration-none',
+      'container-link': 'p-2 opacity-60 hover:opacity-100 cursor-pointer hover:bg-hex-333333 dark:hover:bg-hex-ffffff hover:bg-op-10 transition-colors transition-opacity duration-200',
     },
     {
-      'hr-line': 'w-14 mx-auto my-8 border-solid border-1px !border-truegray-800 !dark:border-truegray-200',
+      'hr-line': 'w-14 mx-auto my-8 border-solid border-1px border-hex-333333 dark:border-hex-ffffff border-op-30',
     },
   ],
   presets: [
