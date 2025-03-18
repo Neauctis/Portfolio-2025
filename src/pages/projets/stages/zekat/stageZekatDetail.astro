@@ -18,61 +18,80 @@ import CardImage from '@/components/CardImage.vue'
       client:load
       title="Problématique"
       content={`
-      Des téléviseurs connectés se trouvent sur 3 sites différents du Groupe et ont pour objectif d’afficher des informations concernant l’entreprise.
-      Le problème est qu’il était difficile de mettre à jour les informations qui apparaissent sur ces téléviseurs.
-      Face à cette problématique, j’ai donc proposé de créer une application que la chargée de communication pourra utiliser pour ajouter, modifier ou supprimer des images qui seront stockées dans une base de données.
-      Il faut également créer des sites Web capables d’afficher les images stockées dans la base de données sous forme de diaporama.
-      Chaque site Zekat en possédera un différent.
-      La base de données ainsi que les sites Web seront stockés sur un serveur Linux (Debian 12) que je vais devoir créer.
+        Des téléviseurs connectés se trouvent sur 3 sites différents du Groupe et ont pour objectif d’afficher des informations concernant l’entreprise.
+        Le problème est qu’il était difficile de mettre à jour les informations qui apparaissent sur ces téléviseurs.
+        Face à cette problématique, j’ai donc proposé de créer une application que la chargée de communication pourra utiliser pour ajouter, modifier ou supprimer des images qui seront stockées dans une base de données.
+        Il faut également créer des sites Web capables d’afficher les images stockées dans la base de données sous forme de diaporama.
+        Chaque site Zekat en possédera un différent.
+        La base de données ainsi que les sites Web seront stockés sur un serveur Linux (Debian 12) que je vais devoir créer.
 
-      J’ai donc commencé le lundi 3 juin le projet en commençant par le développement de l’application.
+        J’ai donc commencé le lundi 3 juin le projet en commençant par le développement de l’application.
       `}
     />
     <Card
       client:load
       title="Application"
       content={`
-      Application
-      J’ai décidé de développer en C# car c’est ce que nous utilisons en cours et je me projetais déjà sur quels outils et quelles méthodes vues en cours utiliser.
-      Je ne voyais donc pas d’inconvénient à utiliser du C#.</br>
+        Application
+        J’ai décidé de développer en C# car c’est ce que nous utilisons en cours et je me projetais déjà sur quels outils et quelles méthodes vues en cours utiliser.
+        Je ne voyais donc pas d’inconvénient à utiliser du C#.</br>
 
-      </br>J’ai donc réfléchi à ce que j’allais mettre sur l’application,
-      à la façon dont l’utilisateur pourra ajouter des images,
-      aux informations qu’il devra renseigner,
-      à ce qu’il aura besoin de voir sur l’application,
-      à la sécurité à mettre en place, etc.`}
+        </br>J’ai donc réfléchi à ce que j’allais mettre sur l’application,
+        à la façon dont l’utilisateur pourra ajouter des images,
+        aux informations qu’il devra renseigner,
+        à ce qu’il aura besoin de voir sur l’application,
+        à la sécurité à mettre en place, etc.`}
     />
     <hr class="hr-line" />
     <h2 class="underline text-main" style="text-align: center;">Détails de l'application</h2>
     <CardImage
       title="Fenêtre Connexion"
       contentup={`
-      J’ai donc commencé par créer une fenêtre de connexion qui demandera à l’utilisateur un mot de passe </br>
-      (il n’y a qu’un seul mot de passe stocké et hashé dans la base de données).
+        J’ai donc commencé par créer une fenêtre de connexion qui demandera à l’utilisateur un mot de passe </br>
+        (il n’y a qu’un seul mot de passe stocké et hashé dans la base de données).
       `}
       image="/projets/zekat/app_conn.png"
     />
     <CardImage
       title="Fenêtre Menu Principal"
       contentup={`
-      Lorsque l’utilisateur entre le bon mot de passe, il accède à la page du menu principal.
+        Lorsque l’utilisateur entre le bon mot de passe, il accède à la page du menu principal.
       `}
       image="/projets/zekat/app_mp.png"
       contentdown={`
-      Il y a une barre de navigation en haut qui donne 3 options à l’utilisateur.
-        <ul>
-          <li><strong>Ajouter : </strong>Permet d’ajouter dans la base de données des images se trouvant sur le PC de l’utilisateur.</li>
-          <li><strong>Modifier : </strong>Permet de modifier le titre, la durée d’affichage en secondes, l'ordre d’affichage ainsi que le site Zekat où apparaîtra l'image.</li>
-          <li><strong>Supprimer : </strong>Permet de supprimer les images dans la base de données.</li>
-        </ul>
+        Il y a une barre de navigation en haut qui donne 3 options à l’utilisateur.
+          <ul>
+            <li><strong>Ajouter : </strong>Permet d’ajouter dans la base de données des images se trouvant sur le PC de l’utilisateur.</li>
+            <li><strong>Modifier : </strong>Permet de modifier le titre, la durée d’affichage en secondes, l'ordre d’affichage ainsi que le site Zekat où apparaîtra l'image.</li>
+            <li><strong>Supprimer : </strong>Permet de supprimer les images dans la base de données.</li>
+          </ul>
       `}
     />
     <CardImage
-      title="Fenêtre Menu Principal"
-      contentup={`
-      Lorsque l’utilisateur entre le bon mot de passe, il accède à la page du menu principal.
+      title="Fenêtre Ajouter"
       `}
-      image="/projets/zekat/app_mp.png"
+      image="/projets/zekat/app_ajt.png"
+      contentdown={`
+        En haut de la fenêtre, il y a un tableau donnant diverses informations comme le titre de l’image, son extension, la durée d’affichage sur le site en secondes et sur quel site Zekat l'image apparaîtra. Le titre, la durée d’affichage, l’ordre d’affichage et le site d'affichage peuvent être modifiés. Lorsque l’utilisateur clique sur une information dans le tableau, il voit une prévisualisation de l’image liée à la ligne sélectionnée.
+
+        Il est possible de modifier plusieurs lignes en même temps,
+        c'est là que la fonctionnalité "Verrouiller" entre en jeu.
+        Cette fonctionnalité permet de verrouiller certaines valeurs afin de ne pas les modifier par erreur lors d'une modification multiple.
+      `}
+      `
+    />
+    <CardImage
+      title="Fenêtre Modifier"
+      `}
+      image="/projets/zekat/app_mdf.png"
+      contentdown={`
+        Sur cette fenêtre,
+        il y a exactement la même disposition ainsi que les mêmes paramètres d'image que la fenêtre "Ajouter",
+        à l'exception de la fonctionnalité permettant de changer l'ordre des images.
+        Cette fenêtre sert à modifier les informations des images après les avoir ajoutées,
+        en cas d'oubli ou d'erreur par exemple.
+        `}
+      `
     />
   </article>
   <hr class="hr-line" />
