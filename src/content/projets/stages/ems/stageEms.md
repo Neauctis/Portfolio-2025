@@ -1,13 +1,13 @@
 ---
-title: Stage en Développement Logiciel chez Groupe Zekat
-description: Développement d'applications et d'outils pour l'automatisation des processus industriels au sein du Groupe Zekat, spécialiste en solutions électroniques.
-date: "Mai 2024"
-duration: "4 mois"
-company: "Groupe Zekat"
+title: Stage au Écoles militaires de Saumur.
+description: Développement d'une application pour l'état-major.
+date: "Février 2024"
+duration: "7 semaine"
+company: "Écoles militaire de Saumur"
 location: "Angers, France"
 image:
-  src: "/projets/zekat/logo_Zekat.jpg"
-  alt: "Logo du Groupe Zekat"
+  src: "/projets/ems/logo_Ems.png"
+  alt: "Logo des Écoles militaire de Saumur"
 images:
   - src: "/projets/zekat/logo_Zekat.jpg"
     alt: "Logo du Groupe Zekat"

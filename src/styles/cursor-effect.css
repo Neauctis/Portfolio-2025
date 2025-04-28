@@ -71,7 +71,10 @@ html.dark .cursor-ring {
 
 .cursor-click {
   transform: scale(0.8) rotate(35deg);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-cursor, .cursor-ring {
+  transition: none; /* Suppression des transitions par défaut */
 }
 
 .cursor-hover {

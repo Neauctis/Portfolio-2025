@@ -80,19 +80,11 @@ export function initCursorEffect() {
     cursor.classList.add('cursor-click')
     ring.classList.add('cursor-click')
 
-    // Animation plus longue et suppression plus douce
+    // Suppression des transitions qui causaient le blocage
     setTimeout(() => {
-      cursor.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-      ring.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
       cursor.classList.remove('cursor-click')
       ring.classList.remove('cursor-click')
-
-      // Réinitialisation des transitions après l'animation
-      setTimeout(() => {
-        cursor.style.transition = ''
-        ring.style.transition = ''
-      }, 300)
-    }, 400)
+    }, 300)
 
     document.dispatchEvent(new CustomEvent('cursor-click', {
       detail: { x: Number.parseFloat(cursor.style.left), y: Number.parseFloat(cursor.style.top) },
