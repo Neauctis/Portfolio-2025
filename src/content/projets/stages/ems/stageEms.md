@@ -1,7 +1,7 @@
 ---
 title: Stage au Écoles militaires de Saumur.
-description: Développement d'une application pour l'état-major.
-date: "Février 2024"
+description: Dans le cadre des cours de MEDOT  suivis par les stagiaires , qui consistent à élaborer des schémas tactiques militaires à l’aide de symboles, j'ai participé au développement d’une application visant à accompagner pédagogiquement dans les étapes de la méthode et rendre la tâche la plus intuitive possible.
+date: "2025"
 duration: "7 semaine"
 company: "Écoles militaire de Saumur"
 location: "Angers, France"
@@ -9,12 +9,10 @@ image:
   src: "/projets/ems/logo_Ems.png"
   alt: "Logo des Écoles militaire de Saumur"
 images:
-  - src: "/projets/zekat/logo_Zekat.jpg"
-    alt: "Logo du Groupe Zekat"
-  - src: "/projets/zekat/logo_Zekat.jpg"
-    alt: "Logo du Groupe Zekat"
-  - src: "/projets/zekat/logo_Zekat.jpg"
-    alt: "Logo du Groupe Zekat"
+  - src: "/projets/ems/photoEms.jpg"
+    alt: "Photo du bâtiment des Écoles militaires de Saumur"
+  - src: "/projets/ems/medoticielExemple.png"
+    alt: "Capture d'écran de l'application Medoticiel"
 skills:
   - "C#"
   - ".NET Core"

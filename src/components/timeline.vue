@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
-const { title, undertitle, startdate, enddate, address, content } = defineProps({
+const { title, undertitle, startdate, enddate, address, content, duration } = defineProps({
   title: { type: String, required: true },
   undertitle: { type: String, required: false },
   startdate: { type: String, required: true },
   enddate: { type: String, required: true },
   address: { type: String, required: false },
   content: { type: String, required: true },
+  duration: { type: String, required: false }, // Nouvelle prop pour la durée
 })
 
 const isExpanded = ref(false)
@@ -20,13 +21,6 @@ function toggleExpand() {
   isExpanded.value = !isExpanded.value
   setTimeout(() => animationInProgress.value = false, 300)
 }
-
-const formattedDuration = computed(() => {
-  const start = new Date(startdate)
-  const end = new Date(enddate)
-  const duration = Math.abs(end.getFullYear() - start.getFullYear())
-  return `${duration} years`
-})
 </script>
 
 <template>
@@ -47,15 +41,11 @@ const formattedDuration = computed(() => {
           </div>
           <div class="details-area">
             <div class="timeline-period">
-              <p class="date-chip">
-                {{ startdate }}
-              </p>
+              <p class="date-chip">{{ startdate }}</p>
               <span class="date-separator">→</span>
-              <p class="date-chip">
-                {{ enddate }}
-              </p>
-              <p class="duration-badge">
-                {{ formattedDuration }}
+              <p class="date-chip">{{ enddate }}</p>
+              <p v-if="duration" class="duration-badge">
+                {{ duration }}
               </p>
             </div>
             <div v-if="address" class="timeline-address">
