@@ -21,22 +21,31 @@ const { ...head } = Astro.props
     />
   </head>
   <body class="bg-main text-main min-h-screen font-['Inter'] w-full" style="cursor: none;">
-    <div class="starfield"></div>
-    <Header client:load />
-    <main class="max-w-5xl mx-auto sm:pt-36 pt-26 pb-16 px-6">
-      <slot />
-      <ScrollToTop client:load />
-      <Footer />
-    </main>
+    <div class="ascii-field" aria-hidden="true"><pre></pre></div>
+    <div class="ascii-content">
+      <Header client:load />
+      <main class="max-w-5xl mx-auto sm:pt-36 pt-26 pb-16 px-6">
+        <slot />
+        <ScrollToTop client:load />
+        <Footer />
+      </main>
+    </div>
   </body>
 </html>
 
 <script>
+  import { initAsciiField } from '../scripts/ascii-field'
   import { initCursorEffect } from '../scripts/cursor-effect'
-  import { initStarField } from '../scripts/starField'
+
+  let cleanupAsciiField: (() => void) | undefined
+
+  document.addEventListener('astro:before-swap', () => {
+    cleanupAsciiField?.()
+    cleanupAsciiField = undefined
+  })
 
   document.addEventListener('astro:page-load', () => {
-    initStarField()
+    cleanupAsciiField = initAsciiField()
     initCursorEffect()
   })
 </script>
